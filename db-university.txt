@@ -4,3 +4,5 @@
 4 SELECT * FROM `courses` WHERE period = "I semestre" AND year = 1;
 5 SELECT * FROM `exams` WHERE DAY(date) = 20 AND MONTH(date) = 06 AND YEAR(date) = 2020 AND HOUR(hour) >= 14;
 6 SELECT * FROM `degrees` WHERE level = "magistrale";
+7 SELECT COUNT(*) FROM `departments`;
+8 SELECT * FROM `teachers` WHERE phone IS NULL;
