@@ -1,0 +1,52 @@
+1 SELECT students.name AS Nome, students.surname AS Cognome, degrees.name AS Corso_Laurea
+FROM students
+JOIN degrees
+ON students.degree_id = degrees.id
+WHERE degrees.name = "Corso di Laurea in Economia"
+ORDER BY Cognome ASC;
+
+2 SELECT degrees.name AS Corsi_Laurea_Magistrale_Neuroscienze
+FROM degrees
+JOIN departments
+ON degrees.department_id = departments.id
+WHERE departments.name = "Dipartimento di Neuroscienze" AND degrees.level = "Magistrale"
+ORDER BY degrees.name ASC;
+
+3 SELECT courses.name AS Corsi_Fulvio_Amato
+FROM courses
+JOIN course_teacher
+ON courses.id = course_teacher.course_id
+WHERE course_teacher.teacher_id = 44
+ORDER BY courses.name ASC;
+
+4 SELECT students.surname AS Cognome, students.name AS Nome, degrees.name AS Corso_Laurea, degrees.level AS Durata, degrees.address AS Indirizzo, degrees.email AS Email, degrees.website AS Sito_Web, departments.name AS Dipartimento
+FROM students
+JOIN degrees
+ON students.degree_id = degrees.id
+JOIN departments
+ON degrees.department_id = departments.id
+ORDER BY students.surname ASC;
+
+5 SELECT degrees.name AS Corsi_Laurea, courses.name AS Corsi, teachers.name AS Nome_Insegnante, teachers.surname AS Cognome
+FROM degrees
+JOIN courses
+ON degrees.id = courses.degree_id
+JOIN course_teacher
+ON courses.id = course_teacher.course_id
+JOIN teachers
+ON course_teacher.teacher_id = teachers.id
+ORDER BY degrees.name ASC;
+
+6 SELECT teachers.name AS Nome_Insegnante, teachers.surname AS Cognome_Insegnante
+FROM teachers
+JOIN course_teacher
+ON teachers.id = course_teacher.teacher_id
+JOIN courses
+ON course_teacher.course_id = courses.id
+JOIN degrees
+ON courses.degree_id = degrees.id
+JOIN departments
+ON degrees.department_id = departments.id
+WHERE departments.name = "Dipartimento di Matematica"
+GROUP BY teachers.id
+ORDER BY teachers.surname ASC;
